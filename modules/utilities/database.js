@@ -42,9 +42,9 @@ con.connect(function (err) {
  * @param {int} ownerID  id of the user that uploaded the file.
  * @return {bool}  if successfull
  */
-exports.newFile = function (filename, chunks, ownerID, callback) {
-    var sql = `INSERT INTO files (filename, chunks, ownerID) 
-               VALUES ('${filename}',${chunks.length},${ownerID})`;
+exports.newFile = function (filename, chunks, ownerID, fileSize, callback) {
+    var sql = `INSERT INTO files (filename, chunks,size ,ownerID) 
+               VALUES ('${filename}',${chunks.length},${fileSize},${ownerID})`;
 
     con.query(sql, function (err, result) {
         if (err)
